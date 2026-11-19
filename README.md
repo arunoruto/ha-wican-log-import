@@ -1,5 +1,12 @@
 # WiCAN Log Import
 
+> [!WARNING]
+> **Untested on real hardware (0.0.x).** The integration passes its automated tests with
+> generated log files, but it has not yet imported a log from a real WiCAN. The log format
+> is taken from [wican-cli](https://github.com/philipkocanda/wican-cli) and may differ on your
+> firmware. Try `wican_log_import.dry_run` first and report what you find. Version 0.1.0
+> will follow once imports from a real device are confirmed.
+
 Imports the SD card trip logs of a **WiCAN Pro** OBD-II dongle into Home Assistant's own
 long-term statistics. Data recorded while the car was away from home Wi-Fi then shows up in
 your history graphs as hourly mean/min/max. No InfluxDB, no Grafana, no cloud.
