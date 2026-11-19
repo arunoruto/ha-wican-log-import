@@ -1,0 +1,14 @@
+{
+  "domain": "wican_log_import",
+  "name": "WiCAN Log Import",
+  "after_dependencies": ["wican"],
+  "codeowners": ["@arunoruto"],
+  "config_flow": true,
+  "dependencies": ["recorder"],
+  "documentation": "https://github.com/arunoruto/ha-wican-log-import",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/arunoruto/ha-wican-log-import/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

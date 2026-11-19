@@ -1,0 +1,129 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "WiCAN device",
+        "description": "Address of the WiCAN Pro on your LAN. A fixed IP address is more reliable than the .local name.",
+        "data": {
+          "host": "IP address or hostname"
+        },
+        "data_description": {
+          "host": "For example 192.168.1.118 or wican_xxxxxxxxxxxx.local"
+        }
+      },
+      "unreachable": {
+        "title": "WiCAN is asleep",
+        "description": "{host} did not answer. This is normal: the WiCAN is only on Wi-Fi while the engine runs and for about 5 minutes after it stops. Submit to save the address anyway; logs are imported automatically the next time the car is home."
+      }
+    },
+    "error": {
+      "invalid_host": "Invalid address.",
+      "unexpected_response": "The device answered, but not like a WiCAN.",
+      "logs_not_supported": "This device does not provide SD card logs (/obd_logs). A WiCAN Pro with SD logging enabled is required."
+    },
+    "abort": {
+      "already_configured": "This WiCAN is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "WiCAN log import options",
+        "data": {
+          "poll_interval": "Check interval",
+          "trip_gap": "Trip gap",
+          "prefer_sd_data": "Prefer SD data over live statistics",
+          "entity_overrides": "Parameter to entity overrides",
+          "ignored_params": "Ignored parameters",
+          "param_odometer": "Odometer parameter",
+          "param_coolant": "Coolant temperature parameter",
+          "param_voltage": "Control module voltage parameter",
+          "param_fuel_rate": "Fuel rate parameter",
+          "param_intake_temp": "Intake air temperature parameter",
+          "param_distance_mil": "Distance with check-engine light parameter"
+        },
+        "data_description": {
+          "poll_interval": "How often to check whether the WiCAN is reachable.",
+          "trip_gap": "A new trip starts when readings are further apart than this.",
+          "prefer_sd_data": "Overwrite hours that Home Assistant already compiled from live data.",
+          "entity_overrides": "One name=entity_id per line, e.g. 05-EngineCoolantTemp=sensor.my_coolant",
+          "ignored_params": "One name or glob pattern per line (case-insensitive). Parameters with unit Encoded are always skipped."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "last_trip_start": {
+        "name": "Last trip start"
+      },
+      "last_trip_end": {
+        "name": "Last trip end"
+      },
+      "last_trip_duration": {
+        "name": "Last trip duration"
+      },
+      "last_trip_distance": {
+        "name": "Last trip distance"
+      },
+      "last_trip_max_coolant_temp": {
+        "name": "Last trip max coolant temperature"
+      },
+      "last_trip_min_voltage": {
+        "name": "Last trip min control module voltage"
+      },
+      "last_trip_max_voltage": {
+        "name": "Last trip max control module voltage"
+      },
+      "last_trip_avg_fuel_rate": {
+        "name": "Last trip average fuel rate"
+      },
+      "last_trip_max_intake_temp": {
+        "name": "Last trip max intake air temperature"
+      },
+      "last_trip_distance_mil_on": {
+        "name": "Last trip distance with check-engine light"
+      },
+      "import_status": {
+        "name": "Last log import"
+      }
+    }
+  },
+  "exceptions": {
+    "no_loaded_entry": {
+      "message": "No loaded WiCAN log import entry found."
+    }
+  },
+  "services": {
+    "dry_run": {
+      "name": "Dry run",
+      "description": "Download and parse the logs and report what would be imported, without writing statistics or changing the import state.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Config entry",
+          "description": "Limit to one WiCAN. Default: all."
+        }
+      }
+    },
+    "import_now": {
+      "name": "Import now",
+      "description": "Check the WiCAN and import new logs immediately.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Config entry",
+          "description": "Limit to one WiCAN. Default: all."
+        }
+      }
+    },
+    "reimport": {
+      "name": "Re-import all logs",
+      "description": "Forget which logs were imported, so all logs on the SD card are read again at the next wake-up. Use after fixing entity mappings or state classes.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Config entry",
+          "description": "Limit to one WiCAN. Default: all."
+        }
+      }
+    }
+  }
+}

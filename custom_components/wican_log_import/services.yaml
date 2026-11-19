@@ -1,0 +1,18 @@
+dry_run:
+  fields:
+    config_entry_id:
+      selector:
+        config_entry:
+          integration: wican_log_import
+import_now:
+  fields:
+    config_entry_id:
+      selector:
+        config_entry:
+          integration: wican_log_import
+reimport:
+  fields:
+    config_entry_id:
+      selector:
+        config_entry:
+          integration: wican_log_import

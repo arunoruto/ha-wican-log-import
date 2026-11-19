@@ -1,0 +1,22 @@
+{
+  "entity": {
+    "sensor": {
+      "last_trip_start": { "default": "mdi:car-clock" },
+      "last_trip_end": { "default": "mdi:car-clock" },
+      "last_trip_duration": { "default": "mdi:timer-outline" },
+      "last_trip_distance": { "default": "mdi:map-marker-distance" },
+      "last_trip_max_coolant_temp": { "default": "mdi:coolant-temperature" },
+      "last_trip_min_voltage": { "default": "mdi:car-battery" },
+      "last_trip_max_voltage": { "default": "mdi:car-battery" },
+      "last_trip_avg_fuel_rate": { "default": "mdi:gas-station" },
+      "last_trip_max_intake_temp": { "default": "mdi:thermometer" },
+      "last_trip_distance_mil_on": { "default": "mdi:engine-outline" },
+      "import_status": { "default": "mdi:database-import" }
+    }
+  },
+  "services": {
+    "dry_run": { "service": "mdi:file-search-outline" },
+    "import_now": { "service": "mdi:database-import" },
+    "reimport": { "service": "mdi:database-refresh" }
+  }
+}
